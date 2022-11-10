@@ -14,7 +14,7 @@ const Home = () => {
   };
   // jump to search bar page
   const handleOnClick3 = () => {
-    navigate('searchbar');
+    navigate('search');
   };
 
 
