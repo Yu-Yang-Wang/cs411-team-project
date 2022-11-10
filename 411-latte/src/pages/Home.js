@@ -8,12 +8,27 @@ const Home = () => {
   const handleOnClick = () => {
     navigate('about');
   };
+  // jump to contact page 
+  const handleOnClick2 = () => {
+    navigate('contact');
+  };
+  // jump to search bar page
+  const handleOnClick3 = () => {
+    navigate('searchbar');
+  };
+
 
   return (
     <div>
       <h2>Home Page</h2>
       <Button onClick={handleOnClick} >About</Button>
+      <h2> Contact Page</h2 >
+      <Button onClick={handleOnClick2} >Contact</Button>
+      <h2> Search Bar</h2 >
+      <Button onClick={handleOnClick3} >Search Bar</Button>
+
     </div>
+    
   );
 }
 
