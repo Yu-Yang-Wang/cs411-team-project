@@ -6,7 +6,7 @@ import {useNavigate} from 'react-router-dom';
 const Contact = () => {
     let navigate = useNavigate();
     const handleOnClick = () => {
-        navigate('/home');
+        navigate('/');
     };
     return (
         <div>
