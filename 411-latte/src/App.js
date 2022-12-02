@@ -1,5 +1,7 @@
 import React from "react"; 
-import { Route, Routes, useNavigate, BrowserRouter} from 'react-router-dom';
+import { Route, Routes, useNavigate, BrowserRouter,Switch,Router} from 'react-router-dom';
+// import Footer from "./components/Footer";
+// import Wrapper from "./components/Wrapper";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
@@ -20,22 +22,17 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Carousel from "./Components/carousel";
 import Card from "./Components/card";
 
-const posts = [
-    { id: '1', name: 'This first post is about React' },
-    { id: '2', name: 'This next post is about Preact' },
-    { id: '3', name: 'We have yet another React post!' },
-    { id: '4', name: 'This is the fourth and final post' },
-];
-const filterPosts = (posts, query) => {
-    if (!query) {
-        return posts;
-    }
 
-    return posts.filter((post) => {
-        const postName = post.name.toLowerCase();
-        return postName.includes(query);
-    });
-};
+// const filterPosts = (posts, query) => {
+//     if (!query) {
+//         return posts;
+//     }
+
+//     return posts.filter((post) => {
+//         const postName = post.name.toLowerCase();
+//         return postName.includes(query);
+//     });
+// };
 
 
 const App = () => {
@@ -43,25 +40,24 @@ const App = () => {
     const { search } = window.location;
     const query = new URLSearchParams(search).get('s');
     const [searchQuery, setSearchQuery] = useState(query || '');
-    const filteredPosts = filterPosts(posts, searchQuery);
+    // const filteredPosts = filterPosts(posts, searchQuery);
 
     return (
-        <div>
-            <Search
-                searchQuery={searchQuery}
-                setSearchQuery={setSearchQuery}
-            />
-            <ul>
-                {filteredPosts.map(post => (
-                    <li key={post.key}>{post.name}</li>
-                ))}
-            </ul>
-            <Navbar/>
-            <Carousel/>
-            <Card/>
-            <Card/>
-        </div>
+       
 
+
+        
+<div><Navbar/>
+    
+        <Routes>
+
+                <Route path="/" element={<Home />} />
+                <Route path="/about" element={<About />}/>
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/searchbar" element={<SearchBar />} />
+        </Routes>
+      </div> 
+        
     
     );
 };

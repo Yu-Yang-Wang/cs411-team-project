@@ -5,11 +5,13 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
+// import { View, Text, StyleSheet, Image, TextInput, Pressable, Keyboard } from 'react-native';
+
 function NavScrollExample() {
   return (
     <Navbar bg="light" expand="lg">
       <Container fluid>
-        <Navbar.Brand href="#">Navbar scroll</Navbar.Brand>
+        <Navbar.Brand href="411-latte/src/pages/Home.js">I'm not Latte</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
@@ -17,20 +19,20 @@ function NavScrollExample() {
             style={{ maxHeight: '100px' }}
             navbarScroll
           >
-            <Nav.Link href="#action1">Home</Nav.Link>
-            <Nav.Link href="#action2">Link</Nav.Link>
-            <NavDropdown title="Link" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
+            <Nav.Link to="/Home"> Home</Nav.Link>
+            <Nav.Link href="411-latte/src/pages/About.js">About</Nav.Link>
+            <NavDropdown title="Order" id="navbarScrollingDropdown">
+              <NavDropdown.Item href="#action3">Make an order</NavDropdown.Item>
               <NavDropdown.Item href="#action4">
-                Another action
+                Past orders
               </NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="#action5">
-                Something else here
+                Summary
               </NavDropdown.Item>
             </NavDropdown>
             <Nav.Link href="#" disabled>
-              Link
+              Contact us
             </Nav.Link>
           </Nav>
           <Form className="d-flex">
@@ -47,5 +49,81 @@ function NavScrollExample() {
     </Navbar>
   );
 }
+// const styles=StyleSheet.create({
+//   Page: {
+//     width: "100%",
+//     height: "100%",
+//     backgroundColor: "white",
+//     paddingHorizontal: 20
+// },
+// Header: {
+//     justifyContent: "center",
+//     alignItems: "center",
+//     flexDirection: "row",
+//     marginTop: 30,
+//     marginBottom: 20
+// },
+// HeaderText: {
+//     fontSize: 25,
+//     marginRight: 10,
+//     color: "#185f56"
+// },
+// HeaderImage: {
+//     width: 75,
+//     height: 75
+// },
+// inputHeader: {
+//     fontSize: 20,
+//     marginTop: 10,
+//     marginBottom: 10,
+//     color: "#185f56",
+//     fontWeight: "500"
+// },
+// input: {
+//     height: 475,
+//     fontSize: 20,
+//     borderRadius: 10,
+//     padding: 10,
+//     backgroundColor: "#3dc1b0",
+//     color: "#185f56"
+// },
+// statusBar: {
+//     height: 40,   
+// },
+// submitButtons: {
+//     flexDirection: "row",
+//     justifyContent: "space-around",
+//     width: "100%",
+//     marginTop: 20
+// },
+// submitButton: {
+//     height: 50,
+//     width: 100,
+//     borderRadius: 10,
+//     justifyContent: "center",
+//     alignItems: "center",
+//     backgroundColor: "#185f56"
+// },
+// submitButtonImage: {
+//     width: 25,
+//     height: 25,
+//     tintColor: "white"
+// },
+// submitButtonActive: {
+//     height: 50,
+//     width: 100,
+//     borderRadius: 10,
+//     backgroundColor: "red",
+//     justifyContent: "center",
+//     alignItems: "center"
+// }
 
+
+
+
+
+
+
+
+// })
 export default NavScrollExample;
