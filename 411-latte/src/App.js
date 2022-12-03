@@ -21,9 +21,15 @@ import Navbar from "./Components/Navbar/NavbarElements";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Carousel from "./Components/carousel";
 import Card from "./Components/card";
-import Login from "./Components/login";
+//import Login from "./Components/login";
 import VeriNavbar from "./Components/VertiNavbar/VertiNavbar";
 
+//import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { UserProvider } from "./contexts/user.context";
+//import Home from "./pages/Home.page";
+import Login from "./pages/Login.page";
+import PrivateRoute from "./pages/PrivateRoute.page";
+import Signup from "./pages/Signup.page";
 // const filterPosts = (posts, query) => {
 //     if (!query) {
 //         return posts;
@@ -45,26 +51,42 @@ const App = () => {
 
 return (
        
-
+    //<BrowserRouter>
+    <div className="App">
+     {/* We are wrapping our whole app with UserProvider so that */}
+     {/* our user is accessible through out the app from any page*/}
+     <UserProvider>
+       <Routes>
+         <Route path="/login" element={<Login />} />
+         <Route path="/signup" element={<Signup />} />
+         {/* We are protecting our Home Page from unauthenticated */}
+         {/* users by wrapping it with PrivateRoute here. */}
+         <Route element={<PrivateRoute />}>
+           <Route path="/" element={<Home />} />
+         </Route>
+       </Routes>
+     </UserProvider>
+     </div>
+   //</BrowserRouter>
 
         
-    <div><Navbar/>
+    // <div><Navbar/>
     
-        <Routes>
+    //     <Routes>
 
-                <Route path="/" element={<Home />} />
-                <Route path="/about" element={<About />}/>
-                <Route path="/contact" element={<Contact />} />
-                <Route path="/searchbar" element={<SearchBar />} />
-        </Routes>
-        {/* <Carousel/>
+    //             <Route path="/" element={<Home />} />
+    //             <Route path="/about" element={<About />}/>
+    //             <Route path="/contact" element={<Contact />} />
+    //             <Route path="/searchbar" element={<SearchBar />} />
+    //     </Routes>
+        /* <Carousel/>
             <Card/>
             <Card/>
             <Login/> 
-            <VeriNavbar/>  */}
+            <VeriNavbar/>  */
         
         
-      </div> 
+    //   </div> 
         
     
     );

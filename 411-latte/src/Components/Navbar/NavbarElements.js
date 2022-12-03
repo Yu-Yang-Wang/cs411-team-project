@@ -117,13 +117,6 @@ function NavScrollExample() {
 //     justifyContent: "center",
 //     alignItems: "center"
 // }
-
-
-
-
-
-
-
-
 // })
+
 export default NavScrollExample;

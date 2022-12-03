@@ -3,6 +3,7 @@ import {Button} from "react-bootstrap";
 import {useNavigate} from 'react-router-dom';
 import Carousel from "../Components/carousel";
 
+
 const Home = () => {
   let navigate = useNavigate();
 
