@@ -22,7 +22,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Carousel from "./Components/carousel";
 import Card from "./Components/card";
 import Login from "./Components/login";
-
+import VeriNavbar from "./Components/VertiNavbar/VertiNavbar";
 
 // const filterPosts = (posts, query) => {
 //     if (!query) {
@@ -57,10 +57,13 @@ return (
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/searchbar" element={<SearchBar />} />
         </Routes>
-        {/* <Carousel/>
+        <Carousel/>
             <Card/>
             <Card/>
-            <Login/> */}
+            <Login/> 
+            <VeriNavbar/> 
+        
+        
       </div> 
         
     
