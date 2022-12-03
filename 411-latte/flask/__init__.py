@@ -1,6 +1,6 @@
 from flask import Flask, Blueprint
 from flask_restx import Resource, Api, Namespace, fields
-from apis import map_rating_key
+from apis import maps
 # from .bird import api as birds
 
 # https://flask-restx.readthedocs.io/en/latest/scaling.html
@@ -12,4 +12,4 @@ api = Api(
     # All API metadatas
 )
 
-api.add_namespace(map_rating_key, path="/api/rating")
+api.add_namespace(maps, path='/api/maps')
