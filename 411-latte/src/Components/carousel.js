@@ -1,4 +1,7 @@
 import Carousel from 'react-bootstrap/Carousel';
+import img1 from '../images/image1.webp';
+import img2 from '../images/image2.jpeg';
+import img3 from '../images/image3.webp';
 
 function DarkVariantExample() {
   return (
@@ -6,7 +9,7 @@ function DarkVariantExample() {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="holder.js/800x400?text=First slide&bg=f5f5f5"
+          src={img1}
           alt="First slide"
         />
         <Carousel.Caption>
@@ -20,7 +23,7 @@ function DarkVariantExample() {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="holder.js/800x400?text=Second slide&bg=eee"
+          src={img2}
           alt="Second slide"
         />
         <Carousel.Caption>
@@ -31,7 +34,7 @@ function DarkVariantExample() {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="holder.js/800x400?text=Third slide&bg=e5e5e5"
+          src={img3}
           alt="Third slide"
         />
         <Carousel.Caption>

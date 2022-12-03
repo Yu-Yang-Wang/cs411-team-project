@@ -57,11 +57,11 @@ return (
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/searchbar" element={<SearchBar />} />
         </Routes>
-        <Carousel/>
+        {/* <Carousel/>
             <Card/>
             <Card/>
             <Login/> 
-            <VeriNavbar/> 
+            <VeriNavbar/>  */}
         
         
       </div> 
