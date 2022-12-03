@@ -26,7 +26,8 @@ const Home = () => {
       <Button onClick={handleOnClick2} >Contact</Button>
       <h2> Search Bar</h2 >
       <Button onClick={handleOnClick3} >Search Bar</Button>
-
+      <h2> Login</h2 >
+      <Button onClick={handleOnClick3} >Login</Button>
     </div>
     
   );

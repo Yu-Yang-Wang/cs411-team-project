@@ -5,13 +5,14 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
+
 // import { View, Text, StyleSheet, Image, TextInput, Pressable, Keyboard } from 'react-native';
 
 function NavScrollExample() {
   return (
     <Navbar bg="light" expand="lg">
       <Container fluid>
-        <Navbar.Brand href="411-latte/src/pages/Home.js">I'm not Latte</Navbar.Brand>
+        <Navbar.Brand href="http://localhost:3000/">I'm not Latte</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
@@ -19,8 +20,8 @@ function NavScrollExample() {
             style={{ maxHeight: '100px' }}
             navbarScroll
           >
-            <Nav.Link to="/Home"> Home</Nav.Link>
-            <Nav.Link href="411-latte/src/pages/About.js">About</Nav.Link>
+            {/* <Nav.Link to="/Home"> Home</Nav.Link> */}
+            <Nav.Link href="http://localhost:3000/about">About</Nav.Link>
             <NavDropdown title="Order" id="navbarScrollingDropdown">
               <NavDropdown.Item href="#action3">Make an order</NavDropdown.Item>
               <NavDropdown.Item href="#action4">
@@ -31,9 +32,8 @@ function NavScrollExample() {
                 Summary
               </NavDropdown.Item>
             </NavDropdown>
-            <Nav.Link href="#" disabled>
-              Contact us
-            </Nav.Link>
+            <Nav.Link href="http://localhost:3000/contact">Contact us</Nav.Link>
+            <Nav.Link href="http://localhost:3000/login">Login</Nav.Link>
           </Nav>
           <Form className="d-flex">
             <Form.Control

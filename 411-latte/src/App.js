@@ -21,6 +21,7 @@ import Navbar from "./Components/Navbar/NavbarElements";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Carousel from "./Components/carousel";
 import Card from "./Components/card";
+import Login from "./Components/login";
 
 
 // const filterPosts = (posts, query) => {
@@ -42,12 +43,12 @@ const App = () => {
     const [searchQuery, setSearchQuery] = useState(query || '');
     // const filteredPosts = filterPosts(posts, searchQuery);
 
-    return (
+return (
        
 
 
         
-<div><Navbar/>
+    <div><Navbar/>
     
         <Routes>
 
@@ -56,6 +57,10 @@ const App = () => {
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/searchbar" element={<SearchBar />} />
         </Routes>
+        {/* <Carousel/>
+            <Card/>
+            <Card/>
+            <Login/> */}
       </div> 
         
     
