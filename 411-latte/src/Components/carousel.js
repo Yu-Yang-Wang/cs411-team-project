@@ -2,6 +2,8 @@ import Carousel from 'react-bootstrap/Carousel';
 import img1 from '../images/image1.webp';
 import img2 from '../images/image2.jpeg';
 import img3 from '../images/image3.webp';
+import React from 'react'
+import ReactDOM from 'react-dom'
 
 function DarkVariantExample() {
   return (

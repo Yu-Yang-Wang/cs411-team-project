@@ -5,7 +5,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
-
+import React, { Component }  from 'react';
 // import { View, Text, StyleSheet, Image, TextInput, Pressable, Keyboard } from 'react-native';
 
 function NavScrollExample() {

@@ -1,6 +1,7 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-
+import React from 'react'
+import ReactDOM from 'react-dom'
 function BasicExample() {
   return (
     <Card style={{ width: '18rem' }}>

@@ -1,17 +1,11 @@
 import React from "react"; 
 import { Route, Routes, useNavigate, BrowserRouter,Switch,Router} from 'react-router-dom';
-// import Footer from "./components/Footer";
-// import Wrapper from "./components/Wrapper";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import SearchBar from "./pages/SearchBar";
 import ReactDOM from 'react-dom';
-
-// import Contact from "./pages/Contact";
-// import Navbar from "./components/Navbar";
-// import Footer from "./components/Footer";
-// import Wrapper from "./components/Wrapper";
+import GoogleLogin from 'react-google-login';
 
 import "./App.css";
 import logo from "./logo.svg";
@@ -26,33 +20,66 @@ import VeriNavbar from "./Components/VertiNavbar/VertiNavbar";
 
 //import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { UserProvider } from "./contexts/user.context";
-//import Home from "./pages/Home.page";
+
 import Login from "./pages/Login.page";
 import PrivateRoute from "./pages/PrivateRoute.page";
 import Signup from "./pages/Signup.page";
-// const filterPosts = (posts, query) => {
-//     if (!query) {
-//         return posts;
-//     }
+function App(){
+    const [loginData, setLoginData] = useState(
+        localStorage.getItem("loginData")
+        ? JSON.parse(localStorage.getItem("loginData"))
+        : null
 
-//     return posts.filter((post) => {
-//         const postName = post.name.toLowerCase();
-//         return postName.includes(query);
-//     });
-// };
-
-
-const App = () => {
-    
+    );
     const { search } = window.location;
     const query = new URLSearchParams(search).get('s');
     const [searchQuery, setSearchQuery] = useState(query || '');
-    // const filteredPosts = filterPosts(posts, searchQuery);
+    const handleFailure =(result)=>{
+      alert(result);
+    };
+    const handleLogin =async(googleData)=>{
+      const res=await fetch('/api/google-login',{
+        method:'POST',
+        body: JSON.stringify({tokenId:googleData.tokenId}),
+        headers:{
+          'Content-Type':'application/json'
+        },
+      });
+      const data=await res.json();
+      setLoginData(data);
+      localStorage.setItem("loginData",JSON.stringify(data));
+    };
 
+    const handleLogout = () => {
+      localStorage.removeItem("loginData");
+      setLoginData(null);
+    };
 return (
        
     //<BrowserRouter>
     <div className="App">
+      <div>
+        {
+          loginData ? (
+            <div>
+              <h3>You logged in as {loginData.email}</h3>
+              <button onClick={handleLogout}>Logout</button>
+            </div>
+          )
+          :(
+            <GoogleLogin
+        clientId={process.env.REACT_APP_GOOGLE_GOOGLE_CLIENT_ID}
+        buttonText="Log in with Google"
+        onSuccess={handleLogin}
+        onFailure={handleFailure}
+        cookiePolicy={'single_host_origin'}
+        
+        
+        ></GoogleLogin>
+
+          )
+        }
+      </div>
      {/* We are wrapping our whole app with UserProvider so that */}
      {/* our user is accessible through out the app from any page*/}
      <UserProvider>
@@ -67,26 +94,6 @@ return (
        </Routes>
      </UserProvider>
      </div>
-   //</BrowserRouter>
-
-        
-    // <div><Navbar/>
-    
-    //     <Routes>
-
-    //             <Route path="/" element={<Home />} />
-    //             <Route path="/about" element={<About />}/>
-    //             <Route path="/contact" element={<Contact />} />
-    //             <Route path="/searchbar" element={<SearchBar />} />
-    //     </Routes>
-        /* <Carousel/>
-            <Card/>
-            <Card/>
-            <Login/> 
-            <VeriNavbar/>  */
-        
-        
-    //   </div> 
         
     
     );
