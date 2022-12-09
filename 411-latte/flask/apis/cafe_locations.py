@@ -2,7 +2,6 @@ from flask_restx import Namespace, Resource, fields
 # flask imports 
 from flask import jsonify, Response 
 import googlemaps 
-
 from dotenv import load_dotenv, find_dotenv 
 import os 
 import requests 
@@ -10,14 +9,14 @@ import requests
 # locate the env file for secured informations 
 load_dotenv(find_dotenv())
 
-api = Namespace('GoogleMap ', description='Getting the google map information, mainly rating, location, and reviews')
+api = Namespace('cafe_locations', description='Getting the google map information of the cafe location')
 
 # accessing the google map api 
 G_KEY = os.getenv("GOOGlE_API_K")
 
 
 # routing the page w/ the frontend 
-@api.route('/search/<string:place_loc')
+@api.route('/search/<string:place_loc>')
 
 # setting up the class 
 class mapLookup(Resource):
@@ -27,14 +26,16 @@ class mapLookup(Resource):
             return Response(status=400) # no location found
          
         rating_ls, dist_ls = get_nearby_coffee(loc)
-        return rating_ls, dist_ls
+        return jsonify(BYRATING =rating_ls, BYDISTANCE = dist_ls)
     
-
 gmaps = googlemaps.Client(key= G_KEY)
 
 
 # Google API requires place_id to get the information near by the location  
 def get_place_loc(place_name):
+    '''
+    Receive the input from the answer, after validating it as a valid location, return the lattitude and longtitude of the location
+    '''
     # use the api key to get the place id of the coffee house near the user 
     # e.g place_name = "848 beacon street Boston"
     loc =  gmaps.geocode(place_name)
@@ -44,10 +45,14 @@ def get_place_loc(place_name):
     
             
 def get_place_info(place_id):
+    '''
+    Get the place information given the place id 
+    '''
     # use the place id to get the rating, review, location, hours of the coffee house 
     # e.g place_id = "ChIJmQwZgjKu44kRnFv0fXzW8pI"
     
     # find the reviews, opening hours of the coffee house
+    # tried parsing it w/ the json selection, but there's too much in the package and takes too long 
     url = url = "https://maps.googleapis.com/maps/api/place/details/json?place_id=" + place_id + "&fields=name%2Crating%2Cformatted_phone_number%2copening_hours%2cwebsite&key=" + G_KEY 
     payload = {}
     headers = {}
@@ -80,13 +85,18 @@ def get_place_info(place_id):
     return info 
     
 
-def get_nearby_coffee(loc ):
+def get_nearby_coffee(loc, radius = 1000 ):
+    '''
+    Gets the nearby coffee house information given the lattitude and longtitude.
+    By default, it searches for the coffee house within 1000 meters of the user's location.
+    '''
     # set up params for the google api : name, phone number, weekday_text, rating, website  
     params = {
         'radius': 1000,
         'location': loc,
-        'open_now': True,
-        'keyword': 'coffee'
+        #'open_now': True,
+        'keyword': 'coffee', 
+        'keyword': 'latte'
     }
     gmapz = gmaps.places_nearby(**params)
     # filer out the coffee house that does not have rating 
@@ -100,19 +110,28 @@ def get_nearby_coffee(loc ):
     #sort the distance by top 5 closest, using distance formula 
     gmapz_rating_loc = sorted(gmapz_rating_loc, key=lambda x: (x['geometry']['location']['lat'] - float(loc.split(",")[0]))**2 + (x['geometry']['location']['lng'] - float(loc.split(",")[1]))**2)[:5]
 
-    dist_ls = [] 
-    rating_ls = [] 
-
-    for item in gmapz_rating:
-        # add it to rating_dict 
-        dist_ls.append(get_place_info(item['place_id']))
-
-    for item in gmapz_rating_loc:
-        # add it to rating_dict 
-        rating_ls.append(get_place_info(item['place_id']))
+    
+    # use get place info to get the information of the coffee house
+    dist_ls = {
+        'top1_d': get_place_info(gmapz_rating_loc[0]['place_id']),
+        'top2_d': get_place_info(gmapz_rating_loc[1]['place_id']),
+        'top3_d': get_place_info(gmapz_rating_loc[2]['place_id']),
+        'top4_d': get_place_info(gmapz_rating_loc[3]['place_id']),
+        'top5_d': get_place_info(gmapz_rating_loc[4]['place_id'])
+    }
+    rating_ls = {
+        'top1_r': get_place_info(gmapz_rating[0]['place_id']),
+        'top2_r': get_place_info(gmapz_rating[1]['place_id']),
+        'top3_r': get_place_info(gmapz_rating[2]['place_id']),
+        'top4_r': get_place_info(gmapz_rating[3]['place_id']),
+        'top5_r': get_place_info(gmapz_rating[4]['place_id'])
+    } 
+    
+    # return the top 5 highest rating, the top 5 closest coffee house in the json format
 
     return rating_ls, dist_ls
 
-# create a new mapLookup object 
-temp = mapLookup("848 beacon street Boston")
-print(temp.get("848 beacon street Boston"))
+# example: 
+
+#temp = mapLookup()
+#print(temp.get("42.3601,-71.0589"))
