@@ -4,11 +4,44 @@ import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import { StyleSheet, Text, View } from 'react-native';
+import {
+  ScrollView,
+  TextInput,
+  Keyboard
+} from 'react-native';
 
 import React, { Component }  from 'react';
 // import { View, Text, StyleSheet, Image, TextInput, Pressable, Keyboard } from 'react-native';
 
 function NavScrollExample() {
+//   const handleNameChange = (name) => {
+//     this.setState({ name });
+//   }
+//   this.state = { name: '' }
+
+//   this.handleNameChange = this.handleNameChange.bind(this);
+//   // chandleChange(event){
+//   //   let fieldName = event.target.name;
+//   //   let fleldVal = event.target.value;
+//   //   this.setState({form: {...this.state.form, [fieldName]: fleldVal}})
+//   // }
+// //   this.handleChange = this.handleChange.bind(this);
+// //   this.handleSubmit = this.handleSubmit.bind(this);
+
+
+// const onChange = (e) => {
+//   let inputName = e.target.name;
+//   let inputValue = e.target.value;
+//   let updatedFormState = Object.assign({}, this.state);
+//   updatedFormState.form[inputName].value = inputValue;
+//   this.setState(updatedFormState);
+//  }
+// const handleSubmit = (event) => {
+
+//   alert('A name was submitted: ' + this.state.value);
+//   event.preventDefault();
+// }
   return (
     <Navbar bg="light" expand="lg">
       <Container fluid>
@@ -32,18 +65,38 @@ function NavScrollExample() {
                 Summary
               </NavDropdown.Item>
             </NavDropdown>
-            <Nav.Link href="411-latte/src/pages/Contact.js">Contact us</Nav.Link>
+            <Nav.Link href="http://localhost:3000/contact">Contact us</Nav.Link>
             <Nav.Link href="http://localhost:3000/login">Login</Nav.Link>
           </Nav>
           <Form className="d-flex">
             <Form.Control
               type="search"
-              placeholder="Search"
               className="me-2"
               aria-label="Search"
+              placeholder='enter' 
+              // defaultValue={this.state.form.name}
+              // onChange={this.handleChange.bind(this)}
             />
             <Button variant="outline-success">Search</Button>
+            
+           {/* <form onSubmit={this.handleSubmit}>
+        <label>
+          Name:
+          <input type="text" value={this.state.value} onChange={this.handleChange} />
+        </label>
+        <input type="submit" value="Submit" />
+      </form> */}
           </Form>
+{/* <TextInput
+  style={styles.textInput}
+  placeholder="Your name"
+  maxLength={20}
+  onBlur={Keyboard.dismiss}
+  value={this.state.name}
+  onChangeText={this.handleNameChange}
+/> */}
+
+
         </Navbar.Collapse>
       </Container>
     </Navbar>
