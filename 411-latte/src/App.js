@@ -3,14 +3,13 @@ import { Route, Routes, useNavigate, BrowserRouter,Switch,Router} from 'react-ro
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
-import SearchBar from "./pages/SearchBar";
+import SearchBar_page from "./pages/SearchBar_page";
 import ReactDOM from 'react-dom';
 import GoogleLogin from 'react-google-login';
 
 import "./App.css";
 import logo from "./logo.svg";
 import { useState } from 'react';
-import Search from "./Components/search";
 import Navbar from "./Components/Navbar/NavbarElements";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Carousel from "./Components/carousel";
