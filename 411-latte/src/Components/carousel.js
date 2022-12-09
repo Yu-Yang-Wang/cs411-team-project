@@ -13,40 +13,44 @@ function DarkVariantExample() {
     <Carousel variant="dark">
       <Carousel.Item>
         <img
+          style = {{ width: 400, height: 655}}
           className="d-block w-100"
           src={img2}
           alt="First slide"
         />
         <Carousel.Caption>
-          <h5>
-            First slide label
-            
-            </h5>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          <h3>
+            Be Not Latte
+            </h3>
+          <h5>Don't be that guy that's always late to your class.</h5>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
         <img
+          style = {{ width: 400, height: 655}}
           className="d-block w-100"
           src={img4}
           alt="Second slide"
         />
         <Carousel.Caption>
-          <h5>Second slide label</h5>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <h3>Reliable Friend</h3>
+          <h5>
+            Introducting, I'm Not Latte, your best companion through your tedious, arduous, and stressful life.
+          </h5>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
         <img
+          style = {{ width: 400, height: 655}}
           className="d-block w-100"
           src={img5}
           alt="Third slide"
         />
         <Carousel.Caption>
-          <h5>Third slide label</h5>
-          <p>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-          </p>
+          <h3>Never Latte</h3>
+          <h5>
+            Best price, closest store, you name it, we got it.
+          </h5>
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>
