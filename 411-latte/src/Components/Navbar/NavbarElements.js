@@ -32,7 +32,7 @@ function NavScrollExample() {
                 Summary
               </NavDropdown.Item>
             </NavDropdown>
-            <Nav.Link href="http://localhost:3000/contact">Contact us</Nav.Link>
+            <Nav.Link href="411-latte/src/pages/Contact.js">Contact us</Nav.Link>
             <Nav.Link href="http://localhost:3000/login">Login</Nav.Link>
           </Nav>
           <Form className="d-flex">
@@ -49,74 +49,6 @@ function NavScrollExample() {
     </Navbar>
   );
 }
-// const styles=StyleSheet.create({
-//   Page: {
-//     width: "100%",
-//     height: "100%",
-//     backgroundColor: "white",
-//     paddingHorizontal: 20
-// },
-// Header: {
-//     justifyContent: "center",
-//     alignItems: "center",
-//     flexDirection: "row",
-//     marginTop: 30,
-//     marginBottom: 20
-// },
-// HeaderText: {
-//     fontSize: 25,
-//     marginRight: 10,
-//     color: "#185f56"
-// },
-// HeaderImage: {
-//     width: 75,
-//     height: 75
-// },
-// inputHeader: {
-//     fontSize: 20,
-//     marginTop: 10,
-//     marginBottom: 10,
-//     color: "#185f56",
-//     fontWeight: "500"
-// },
-// input: {
-//     height: 475,
-//     fontSize: 20,
-//     borderRadius: 10,
-//     padding: 10,
-//     backgroundColor: "#3dc1b0",
-//     color: "#185f56"
-// },
-// statusBar: {
-//     height: 40,   
-// },
-// submitButtons: {
-//     flexDirection: "row",
-//     justifyContent: "space-around",
-//     width: "100%",
-//     marginTop: 20
-// },
-// submitButton: {
-//     height: 50,
-//     width: 100,
-//     borderRadius: 10,
-//     justifyContent: "center",
-//     alignItems: "center",
-//     backgroundColor: "#185f56"
-// },
-// submitButtonImage: {
-//     width: 25,
-//     height: 25,
-//     tintColor: "white"
-// },
-// submitButtonActive: {
-//     height: 50,
-//     width: 100,
-//     borderRadius: 10,
-//     backgroundColor: "red",
-//     justifyContent: "center",
-//     alignItems: "center"
-// }
-// })
+
 
 export default NavScrollExample;

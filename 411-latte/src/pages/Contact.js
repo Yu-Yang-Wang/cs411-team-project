@@ -11,6 +11,7 @@ const Contact = () => {
     };
     return (
         <div>
+            <h3> Contact Page</h3>
             <h2>Contact Page</h2>
             <Button onClick={handleOnClick} >Home</Button>
         </div>
