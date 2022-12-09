@@ -58,6 +58,7 @@ return (
        
     //<BrowserRouter>
     <div className="App">
+      <Navbar/>
       <div>
         {
           loginData ? (
