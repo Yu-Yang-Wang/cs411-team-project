@@ -1,7 +1,7 @@
 from flask import Flask, Blueprint
 from flask_restx import Resource, Api, Namespace, fields
-from apis import maps
-# from .bird import api as birds
+from .cafe_locations import api as maps
+from .image_item import api as image
 
 # https://flask-restx.readthedocs.io/en/latest/scaling.html
 
@@ -13,3 +13,4 @@ api = Api(
 )
 
 api.add_namespace(maps, path='/api/maps')
+api.add_namespace(image, path='/api/image')
