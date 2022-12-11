@@ -133,5 +133,6 @@ def get_nearby_coffee(loc, radius = 1000 ):
 
 # example: 
 
+
 #temp = mapLookup()
 #print(temp.get("42.3601,-71.0589"))
