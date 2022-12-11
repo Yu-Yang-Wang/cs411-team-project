@@ -84,6 +84,7 @@ return (
      {/* our user is accessible through out the app from any page*/}
      <UserProvider>
        <Routes>
+        <Route path="/search" element={<SearchBar_page />} />
          <Route path="/login" element={<Login />} />
          <Route path="/signup" element={<Signup />} />
          {/* We are protecting our Home Page from unauthenticated */}
