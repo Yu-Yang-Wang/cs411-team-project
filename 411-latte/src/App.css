@@ -48,10 +48,22 @@
   width: 1px;
 }
 .carousel-item h3 {
+  font: open sans;
+  font-size: 2.5em;
   position: absolute;
   margin: 0;
   color: white;
   left: 50%;
-  top: 50%;
+  top: -900%;
+  transform: translate(-50%, -50%);
+}
+.carousel-item h5 {
+  font: open sans;
+  font-size: 1.8em;
+  position: absolute;
+  margin: 0;
+  color:white;
+  left: 50%;
+  top: -200%;
   transform: translate(-50%, -50%);
 }
