@@ -68,7 +68,7 @@ class allLookup(Resource):
         info['names'] = name_ls
         info['phone'] = phone_ls
         info['rating'] = review
-        info['weekday'] = weekday_ls
+        #info['weekday'] = weekday_ls
         info['website'] = website_ls
         info['photo'] = photo_ls
         return make_response(info, 200 )
