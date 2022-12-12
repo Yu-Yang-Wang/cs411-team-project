@@ -46,6 +46,7 @@ export default function VerticalTabs() {
   };
 
   return (
+
     <Box
       sx={{ flexGrow: 1, bgcolor: 'background.paper', display: 'flex', height: 224 }}
     >
@@ -61,9 +62,7 @@ export default function VerticalTabs() {
         <Tab label="Address" {...a11yProps(1)} />
         <Tab label="Email Address" {...a11yProps(2)} />
         <Tab label="Operating hours" {...a11yProps(3)} />
-        <Tab label="Item Five" {...a11yProps(4)} />
-        <Tab label="Item Six" {...a11yProps(5)} />
-        <Tab label="Item Seven" {...a11yProps(6)} />
+        
       </Tabs>
       <TabPanel value={value} index={0}>
         <h1>(617) 353-2000</h1>
@@ -78,15 +77,7 @@ export default function VerticalTabs() {
       <h3>Mon to Fri: 11am-5pm</h3>
       <h3>Sat to Sun: 11am-3pm</h3>
       </TabPanel>
-      <TabPanel value={value} index={4}>
-        Item Five
-      </TabPanel>
-      <TabPanel value={value} index={5}>
-        Item Six
-      </TabPanel>
-      <TabPanel value={value} index={6}>
-        Item Seven
-      </TabPanel>
+    
     </Box>
   );
 }
