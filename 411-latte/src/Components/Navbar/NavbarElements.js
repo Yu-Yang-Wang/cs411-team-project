@@ -4,15 +4,52 @@ import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import { StyleSheet, Text, View } from 'react-native';
+import { UserContext } from "../../contexts/user.context";
+import { useContext, useEffect, useState } from "react";
+import {
+  ScrollView,
+  TextInput,
+  Keyboard
+} from 'react-native';
 
 import React, { Component }  from 'react';
+// const { logOutUser } = useContext(UserContext);
+ 
 // import { View, Text, StyleSheet, Image, TextInput, Pressable, Keyboard } from 'react-native';
 
 function NavScrollExample() {
+//   const handleNameChange = (name) => {
+//     this.setState({ name });
+//   }
+//   this.state = { name: '' }
+
+//   this.handleNameChange = this.handleNameChange.bind(this);
+//   // chandleChange(event){
+//   //   let fieldName = event.target.name;
+//   //   let fleldVal = event.target.value;
+//   //   this.setState({form: {...this.state.form, [fieldName]: fleldVal}})
+//   // }
+// //   this.handleChange = this.handleChange.bind(this);
+// //   this.handleSubmit = this.handleSubmit.bind(this);
+
+
+// const onChange = (e) => {
+//   let inputName = e.target.name;
+//   let inputValue = e.target.value;
+//   let updatedFormState = Object.assign({}, this.state);
+//   updatedFormState.form[inputName].value = inputValue;
+//   this.setState(updatedFormState);
+//  }
+// const handleSubmit = (event) => {
+
+//   alert('A name was submitted: ' + this.state.value);
+//   event.preventDefault();
+// }
   return (
     <Navbar bg="light" expand="lg">
       <Container fluid>
-        <Navbar.Brand href="http://localhost:3000/">I'm not Latte</Navbar.Brand>
+        <Navbar.Brand href="http://localhost:3000">I'm not Latte</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
@@ -32,91 +69,40 @@ function NavScrollExample() {
                 Summary
               </NavDropdown.Item>
             </NavDropdown>
-            <Nav.Link href="http://localhost:3000/contact">Contact us</Nav.Link>
+            <Nav.Link href="http://localhost:3000/contact">Contact</Nav.Link>
             <Nav.Link href="http://localhost:3000/login">Login</Nav.Link>
+            {/* <Nav.Link href "http://localhost:3000/login" onClick{()=>localStorage.clear()};
+            }>Logout</Nav.Link> */}
+            {/* <Nav className=" my-2 ">
+              <NavDropdown>
+              <li><button type='button' onClick={logOutUser}>Logout</button></li>
+               
+              </NavDropdown>
+            </Nav> */}
+            
+            {/*Adding the search bar */}
+            <Nav.Link href="http://localhost:3000/search">Search</Nav.Link> 
           </Nav>
-          <Form className="d-flex">
+          {/* <Form className="d-flex">
             <Form.Control
               type="search"
-              placeholder="Search"
               className="me-2"
               aria-label="Search"
+              placeholder='enter' 
+              // defaultValue={this.state.form.name}
+              // onChange={this.handleChange.bind(this)}
             />
-            <Button variant="outline-success">Search</Button>
-          </Form>
+            <Button variant="outline-success">Search</Button>  */}
+   
+          {/* </Form> */}
+
+
+
         </Navbar.Collapse>
       </Container>
     </Navbar>
   );
 }
-// const styles=StyleSheet.create({
-//   Page: {
-//     width: "100%",
-//     height: "100%",
-//     backgroundColor: "white",
-//     paddingHorizontal: 20
-// },
-// Header: {
-//     justifyContent: "center",
-//     alignItems: "center",
-//     flexDirection: "row",
-//     marginTop: 30,
-//     marginBottom: 20
-// },
-// HeaderText: {
-//     fontSize: 25,
-//     marginRight: 10,
-//     color: "#185f56"
-// },
-// HeaderImage: {
-//     width: 75,
-//     height: 75
-// },
-// inputHeader: {
-//     fontSize: 20,
-//     marginTop: 10,
-//     marginBottom: 10,
-//     color: "#185f56",
-//     fontWeight: "500"
-// },
-// input: {
-//     height: 475,
-//     fontSize: 20,
-//     borderRadius: 10,
-//     padding: 10,
-//     backgroundColor: "#3dc1b0",
-//     color: "#185f56"
-// },
-// statusBar: {
-//     height: 40,   
-// },
-// submitButtons: {
-//     flexDirection: "row",
-//     justifyContent: "space-around",
-//     width: "100%",
-//     marginTop: 20
-// },
-// submitButton: {
-//     height: 50,
-//     width: 100,
-//     borderRadius: 10,
-//     justifyContent: "center",
-//     alignItems: "center",
-//     backgroundColor: "#185f56"
-// },
-// submitButtonImage: {
-//     width: 25,
-//     height: 25,
-//     tintColor: "white"
-// },
-// submitButtonActive: {
-//     height: 50,
-//     width: 100,
-//     borderRadius: 10,
-//     backgroundColor: "red",
-//     justifyContent: "center",
-//     alignItems: "center"
-// }
-// })
+
 
 export default NavScrollExample;

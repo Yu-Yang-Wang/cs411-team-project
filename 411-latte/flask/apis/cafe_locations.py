@@ -81,7 +81,7 @@ def get_place_info(place_id):
     else: 
         website = None 
     # reformat into a new json file, return it 
-    info = {"Name": name,"Phone number": phone_num, "Weekday Hours": weekday_text, "Rating": rating, "Website": website}
+    info = {"Name": name,"Phone_number": phone_num, "Weekday_Hours": weekday_text, "Rating": rating, "Website": website}
     return info 
     
 
@@ -132,6 +132,7 @@ def get_nearby_coffee(loc, radius = 1000 ):
     return rating_ls, dist_ls
 
 # example: 
+
 
 #temp = mapLookup()
 #print(temp.get("42.3601,-71.0589"))

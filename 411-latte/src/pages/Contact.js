@@ -1,18 +1,22 @@
 import React from "react" ;
-import {Button} from "react-bootstrap";
+import {Button, Navbar} from "react-bootstrap";
 import {useNavigate} from 'react-router-dom';
-
+import Map from '../Components/Map';
+import ContactForm from "../Components/ContactForm/ContactForm";
+import VertiNavbar from "../Components/VertiNavbar/VertiNavbar";
 
 const Contact = () => {
     let navigate = useNavigate();
 
-    const handleOnClick = () => {
-        navigate('/');
-    };
+    // const handleOnClick = () => {
+    //     navigate('/');
+    // };
     return (
         <div>
-            <h2>Contact Page</h2>
-            <Button onClick={handleOnClick} >Home</Button>
+          {/* <Navbar/> */}
+            {/* <VertiNavbar/> */}
+            <ContactForm/>
+   
         </div>
     );
 }
