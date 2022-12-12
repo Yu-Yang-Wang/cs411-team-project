@@ -2,7 +2,7 @@ import React from 'react';
 import {Button} from "react-bootstrap";
 import {useNavigate} from 'react-router-dom';
 import Carousel from "../Components/carousel";
-
+import Navbar from "../Components/Navbar/NavbarElements";
 
 
 const Home = () => {
@@ -23,6 +23,7 @@ const Home = () => {
 
   return (
     <div>
+      <Navbar/>
       {/* <h2>Home Page</h2>
       <Button onClick={handleOnClick} >About</Button>
       <h2> Contact Page</h2 >

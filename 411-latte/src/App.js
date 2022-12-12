@@ -30,9 +30,9 @@ function App(){
     //     : null
 
     // );
-    // const { search } = window.location;
-    // const query = new URLSearchParams(search).get('s');
-    // const [searchQuery, setSearchQuery] = useState(query || '');
+    const { search } = window.location;
+    const query = new URLSearchParams(search).get('s');
+    const [searchQuery, setSearchQuery] = useState(query || '');
     // const handleFailure =(result)=>{
     //   alert(result);
     // };
@@ -63,7 +63,7 @@ return (
        
     //<BrowserRouter>
     <div className="App">
-      <Navbar/>
+      {/* <Navbar/> */}
       <div>
         
             <GoogleLogin
@@ -82,7 +82,7 @@ return (
      {/* our user is accessible through out the app from any page*/}
      <UserProvider>
        <Routes>
-        <Route path="/search" element={<SearchBar_page />} />
+        {/* <Route path="/search" element={<SearchBar_page />} /> */}
          <Route path="/login" element={<Login />} />
          <Route path="/signup" element={<Signup />} />
           <Route path="/about" element={<About />} />
@@ -90,6 +90,7 @@ return (
          {/* users by wrapping it with PrivateRoute here. */}
          <Route element={<PrivateRoute />}>
            <Route path="/" element={<Home />} />
+           <Route path="/about" element={<About />} />
          </Route>
        </Routes>
      </UserProvider>
