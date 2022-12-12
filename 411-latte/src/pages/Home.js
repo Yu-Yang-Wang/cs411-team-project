@@ -23,7 +23,7 @@ const Home = () => {
 
   return (
     <div>
-      <Navbar/>
+      {/* <Navbar/> */}
       {/* <h2>Home Page</h2>
       <Button onClick={handleOnClick} >About</Button>
       <h2> Contact Page</h2 >

@@ -65,7 +65,7 @@ function NavScrollExample() {
                 Summary
               </NavDropdown.Item>
             </NavDropdown>
-            <Nav.Link href="http://localhost:3000/contact">Contact us</Nav.Link>
+            <Nav.Link href="http://localhost:3000/contact">Contact</Nav.Link>
             <Nav.Link href="http://localhost:3000/login">Login</Nav.Link>
             {/*Adding the search bar */}
             <Nav.Link href="http://localhost:3000/search">Search</Nav.Link> 
