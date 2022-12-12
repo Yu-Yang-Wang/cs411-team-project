@@ -120,7 +120,7 @@ function get_info() {
         <table style={styles.table}>
           <thead>
             <tr>
-              <th style= {styles.th}> Name</th>
+              <th style= {styles.td}>Name</th>
               <th style= {styles.th}>Phone</th>
               <th style= {styles.th}>Rating</th>
               <th style= {styles.th}>Website</th>
@@ -147,21 +147,21 @@ function get_info() {
             <tr>
                 {/* make it so that the names only appear when it loaded */}
 
-              <th>Name</th>
-              <th>Phone</th>
-              <th>Rating</th>
-              <th>Website</th>
-              <th>Photo</th>
+              <th style= {styles.td}>Name</th>
+              <th style= {styles.td}>Phone</th>
+              <th style= {styles.td}>Rating</th>
+              <th style= {styles.td}>Website</th>
+              <th style= {styles.td}>Photo</th>
             </tr>
           </thead>
           <tbody>
             {firstFiveNames.map((name, index) => (
               <tr key={name}>
-                <td>{name}</td>
-                <td>{firstFivePhones[index]}</td>
-                <td>{firstFiveRatings[index]}</td>
-                <td><a href={firstFiveWebsites[index]}>{firstFiveWebsites[index]}</a></td>
-                <td><img src={firstFivePhotos[index]} alt={name} /></td>
+                <td style= {styles.td}>{name}</td>
+                <td style= {styles.td}>{firstFivePhones[index]}</td>
+                <td style= {styles.td}>{firstFiveRatings[index]}</td>
+                <td style= {styles.td}><a href={firstFiveWebsites[index]}>{firstFiveWebsites[index]}</a></td>
+                <td style= {styles.td}><img src={firstFivePhotos[index]} alt={name} /></td>
               </tr>
             ))}
           </tbody>
