@@ -91,6 +91,7 @@ return (
          <Route element={<PrivateRoute />}>
            <Route path="/" element={<Home />} />
            <Route path="/about" element={<About />} />
+           <Route path="/search_bar" element={<SearchBar_page />} />
          </Route>
        </Routes>
      </UserProvider>

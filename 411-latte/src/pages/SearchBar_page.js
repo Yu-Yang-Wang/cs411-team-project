@@ -51,6 +51,12 @@ const SearchBar_page = () => {
   ? JSON.stringify(results.BYDISTANCE)
   : JSON.stringify(results.BYRATING);
 
+
+  const placesObject = JSON.parse(jsonString || '{}');
+  const names = Object.values(placesObject).map(place => place.Name);
+  const topName = names[0];
+
+
   return (
     <>
       <form onSubmit={handleSubmit}>
@@ -67,6 +73,7 @@ const SearchBar_page = () => {
       </form>
       {/* Use the dangerouslySetInnerHTML property to display the results string */}
       <div dangerouslySetInnerHTML={{ __html: jsonString }} />
+      <div dangerouslySetInnerHTML={{ __html: topName }} />
     </>
   );
 };
