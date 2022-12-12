@@ -47,8 +47,9 @@ const SearchBar_page = () => {
     setSelectedValue(event.target.value);
   };
 
-  // Use the JSON.stringify method to convert the results object into a string
-  const jsonString = JSON.stringify(results);
+  const jsonString = selectedValue === 'BYDISTANCE'
+  ? JSON.stringify(results.BYDISTANCE)
+  : JSON.stringify(results.BYRATING);
 
   return (
     <>
@@ -64,10 +65,13 @@ const SearchBar_page = () => {
           <option value="BYRATING">BYRATING</option>
         </select>
       </form>
-      {/* Use the dangerouslySetInnerHTML property to insert the JSON string into the DOM */}
+      {/* Use the dangerouslySetInnerHTML property to display the results string */}
       <div dangerouslySetInnerHTML={{ __html: jsonString }} />
     </>
   );
 };
+
+  
+
 
 export default SearchBar_page;

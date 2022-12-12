@@ -72,9 +72,10 @@ return (
          onSuccess={handleLogin}
          onFailure={handleFailure}
         cookiePolicy={'single_host_origin'}
-        
-        
-        ></GoogleLogin>
+        isSignedIn={true}
+        >
+
+        </GoogleLogin>
 
         
       </div>
