@@ -68,9 +68,9 @@ function NavScrollExample() {
             <Nav.Link href="http://localhost:3000/contact">Contact us</Nav.Link>
             <Nav.Link href="http://localhost:3000/login">Login</Nav.Link>
             {/*Adding the search bar */}
-            <Nav.Link href="http://localhost:3000/search">Search</Nav.Link> 
+            {/* <Nav.Link href="http://localhost:3000/search">Search</Nav.Link>  */}
           </Nav>
-          <Form className="d-flex">
+          {/* <Form className="d-flex">
             <Form.Control
               type="search"
               className="me-2"
@@ -79,24 +79,10 @@ function NavScrollExample() {
               // defaultValue={this.state.form.name}
               // onChange={this.handleChange.bind(this)}
             />
-            <Button variant="outline-success">Search</Button>
-            
-           {/* <form onSubmit={this.handleSubmit}>
-        <label>
-          Name:
-          <input type="text" value={this.state.value} onChange={this.handleChange} />
-        </label>
-        <input type="submit" value="Submit" />
-      </form> */}
-          </Form>
-{/* <TextInput
-  style={styles.textInput}
-  placeholder="Your name"
-  maxLength={20}
-  onBlur={Keyboard.dismiss}
-  value={this.state.name}
-  onChangeText={this.handleNameChange}
-/> */}
+            <Button variant="outline-success">Search</Button>  */}
+   
+          {/* </Form> */}
+
 
 
         </Navbar.Collapse>
