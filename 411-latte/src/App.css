@@ -1,4 +1,7 @@
-
+@font-face {
+  font-family: Righteous;
+  src: url(./Components/Righteous/Righteous-Regular.ttf);
+}
 .App {
   text-align: center;
 }
@@ -48,8 +51,9 @@
   width: 1px;
 }
 .carousel-item h3 {
-  font: open sans;
-  font-size: 2.5em;
+  
+  font-family: Righteous;
+  font-size: 5em;
   position: absolute;
   margin: 0;
   color: white;
@@ -58,7 +62,7 @@
   transform: translate(-50%, -50%);
 }
 .carousel-item h5 {
-  font: open sans;
+  font: italic 1.2em "Fira Sans", serif;
   font-size: 1.8em;
   position: absolute;
   margin: 0;
