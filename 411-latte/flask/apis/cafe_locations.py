@@ -197,6 +197,7 @@ def get_pic(place_name):
     photo_ls = [] 
     for photo in response['photos']:
         photo_ls.append(photo['src']['medium'])
+
     return photo_ls 
 
 
