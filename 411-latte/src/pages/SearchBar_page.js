@@ -9,6 +9,30 @@ import { useState, useEffect } from 'react';
 // backend link: http://127.0.0.1:5000/api/maps/search/{place_loc}
 // backend link: http://127.0.0.1:5000/api/image/search_item/{image_name
 
+
+//add css to the result table 
+const styles = {
+  table: {
+    width: '100%',
+    borderCollapse: 'collapse',
+    border: '1px solid #ddd',
+    textAlign: 'left',
+    fontSize: '14px',
+    fontFamily: 'Arial, Helvetica, sans-serif',
+    color: '#333'
+  },
+  th: {
+    padding: '10px',
+    border: '1px solid #ddd',
+    backgroundColor: '#f2f2f2'
+  },
+  td: {
+    padding: '10px',
+    border: '1px solid #ddd'
+  }
+
+};
+
 const SearchBar_page = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [results, setResults] = useState({});
@@ -17,7 +41,7 @@ const SearchBar_page = () => {
   // Use the useEffect hook to make the API call when the component is mounted
 
 function get_info() {
-    fetch(`http://127.0.0.1:5000/api/maps//search/all/${searchTerm}`, {
+    fetch(`http://127.0.0.1:5000/api/maps/search/all/${searchTerm}`, {
       method: 'GET',
       headers: {
         'accept': 'application/json'
@@ -77,6 +101,7 @@ function get_info() {
 
   return (
     <>
+    {/* add css to the table  */}
       <form>
         <input
           type="text"
@@ -91,24 +116,25 @@ function get_info() {
       </form>
       {/* Display the name, phone number, rating, website (clickable), photo of the last 5 places in a table */}
       {selectedValue === 'BYDISTANCE' && (
-        <table>
+        
+        <table style={styles.table}>
           <thead>
             <tr>
-              <th>Name</th>
-              <th>Phone</th>
-              <th>Rating</th>
-              <th>Website</th>
-              <th>Photo</th>
+              <th style= {styles.th}> Name</th>
+              <th style= {styles.th}>Phone</th>
+              <th style= {styles.th}>Rating</th>
+              <th style= {styles.th}>Website</th>
+              <th style= {styles.th}>Photo</th>
             </tr>
           </thead>
           <tbody>
             {lastFiveNames.map((name, index) => (
               <tr key={name}>
-                <td>{name}</td>
-                <td>{lastFivePhones[index]}</td>
-                <td>{lastFiveRatings[index]}</td>
-                <td><a href={lastFiveWebsites[index]}>{lastFiveWebsites[index]}</a></td>
-                <td><img src={lastFivePhotos[index]} alt={name} /></td>
+                <td style= {styles.td}>{name}</td>
+                <td style= {styles.td}>{lastFivePhones[index]}</td>
+                <td style= {styles.td}>{lastFiveRatings[index]}</td>
+                <td style= {styles.td}><a href={lastFiveWebsites[index]}>{lastFiveWebsites[index]}</a></td>
+                <td style= {styles.td}><img src={lastFivePhotos[index]} alt={name} /></td>
               </tr>
             ))}
           </tbody>
@@ -119,6 +145,8 @@ function get_info() {
         <table>
           <thead>
             <tr>
+                {/* make it so that the names only appear when it loaded */}
+
               <th>Name</th>
               <th>Phone</th>
               <th>Rating</th>
