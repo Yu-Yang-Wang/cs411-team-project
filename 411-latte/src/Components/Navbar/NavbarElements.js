@@ -5,6 +5,8 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { StyleSheet, Text, View } from 'react-native';
+import { UserContext } from "../../contexts/user.context";
+import { useContext, useEffect, useState } from "react";
 import {
   ScrollView,
   TextInput,
@@ -12,6 +14,8 @@ import {
 } from 'react-native';
 
 import React, { Component }  from 'react';
+// const { logOutUser } = useContext(UserContext);
+ 
 // import { View, Text, StyleSheet, Image, TextInput, Pressable, Keyboard } from 'react-native';
 
 function NavScrollExample() {
@@ -67,8 +71,17 @@ function NavScrollExample() {
             </NavDropdown>
             <Nav.Link href="http://localhost:3000/contact">Contact</Nav.Link>
             <Nav.Link href="http://localhost:3000/login">Login</Nav.Link>
+            {/* <Nav.Link href "http://localhost:3000/login" onClick{()=>localStorage.clear()};
+            }>Logout</Nav.Link> */}
+            {/* <Nav className=" my-2 ">
+              <NavDropdown>
+              <li><button type='button' onClick={logOutUser}>Logout</button></li>
+               
+              </NavDropdown>
+            </Nav> */}
+            
             {/*Adding the search bar */}
-            {/* <Nav.Link href="http://localhost:3000/search">Search</Nav.Link>  */}
+            <Nav.Link href="http://localhost:3000/search">Search</Nav.Link> 
           </Nav>
           {/* <Form className="d-flex">
             <Form.Control
