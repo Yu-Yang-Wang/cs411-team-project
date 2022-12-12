@@ -9,7 +9,6 @@ import img7 from '../images/img7.jpeg';
 import React from 'react'
 import ReactDOM from 'react-dom'
 import img1a from '../images/img1.jpeg';
-import img8 from '../images/img8.jpeg';
 
 function DarkVariantExample() {
   return (
@@ -49,12 +48,12 @@ function DarkVariantExample() {
         <img
           style = {{ width: 400, height: 655}}
           className="d-block w-100"
-          src={img8}
+          src={img5}
           alt="Third slide"
         />
         <Carousel.Caption>
           <h3 style = {{ color: 'white',font: 'Sans-serif'}}>Never Latte</h3>
-          <h5 style = {{ color: 'white',font: 'Sans-serif',top:'-800%'}}>
+          <h5 style = {{ color: 'black',font: 'Sans-serif'}}>
             Best price, closest store, you name it, we got it.
           </h5>
         </Carousel.Caption>

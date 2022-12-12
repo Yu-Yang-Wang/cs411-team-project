@@ -54,7 +54,7 @@
   margin: 0;
   color: white;
   left: 50%;
-  top: -1000%;
+  top: -900%;
   transform: translate(-50%, -50%);
 }
 .carousel-item h5 {
@@ -64,6 +64,6 @@
   margin: 0;
   color:white;
   left: 50%;
-  top: -700%;
+  top: -200%;
   transform: translate(-50%, -50%);
 }
