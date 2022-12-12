@@ -15,8 +15,9 @@ const SearchBar_page = () => {
   const [selectedValue, setSelectedValue] = useState('BYDISTANCE');
 
   // Use the useEffect hook to make the API call when the component is mounted
-  useEffect(() => {
-    fetch(`http://127.0.0.1:5000/api/maps/search/${searchTerm}`, {
+
+function get_info() {
+    fetch(`http://127.0.0.1:5000/api/maps//search/all/${searchTerm}`, {
       method: 'GET',
       headers: {
         'accept': 'application/json'
@@ -30,7 +31,7 @@ const SearchBar_page = () => {
         // Handle the error here
         console.error(error);
       });
-  }, [searchTerm]); // The hook will only be called when the searchTerm changes
+  } 
 
   const handleChange = (event) => {
     setSearchTerm(event.target.value);
@@ -38,6 +39,7 @@ const SearchBar_page = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    get_info();
     // Make the API call to search for places
     // The useEffect hook will handle the API call
   };
@@ -47,33 +49,97 @@ const SearchBar_page = () => {
     setSelectedValue(event.target.value);
   };
 
-  const jsonString = selectedValue === 'BYDISTANCE'
-  ? JSON.stringify(results.BYDISTANCE)
-  : JSON.stringify(results.BYRATING);
+  // get the name, phone, rating, website and photo of the result 
+  const names = results.names || [];
+  const phones = results.phone || [];
+  const ratings = results.rating || [];
+  const websites = results.website || [];
+  const photos = results.photo || [];
+  
+
+  // first 5 elements of each array 
+  const firstFiveNames = names.slice(0, 5);
+  const firstFivePhones = phones.slice(0, 5);
+  const firstFiveRatings = ratings.slice(0, 5);
+  const firstFiveWebsites = websites.slice(0, 5);
+  const firstFivePhotos = photos.slice(0, 5);
 
 
-  const placesObject = JSON.parse(jsonString || '{}');
-  const names = Object.values(placesObject).map(place => place.Name);
-  const topName = names[0];
+
+  // Get the last 5 elements of each array using the Array.slice() method
+  const lastFiveNames = names.slice(-5);
+  const lastFivePhones = phones.slice(-5);
+  const lastFiveRatings = ratings.slice(-5);
+  const lastFiveWebsites = websites.slice(-5);
+  const lastFivePhotos = photos.slice(-5);
+  
 
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form>
         <input
           type="text"
           value={searchTerm}
           onChange={handleChange}
         />
-        <button type="submit">Search</button>
+        <button type="submit" onClick={handleSubmit}>Search</button>
         <select value={selectedValue} onChange={handleSelectChange}>
           <option value="BYDISTANCE">BYDISTANCE</option>
           <option value="BYRATING">BYRATING</option>
         </select>
       </form>
-      {/* Use the dangerouslySetInnerHTML property to display the results string */}
-      <div dangerouslySetInnerHTML={{ __html: jsonString }} />
-      <div dangerouslySetInnerHTML={{ __html: topName }} />
+      {/* Display the name, phone number, rating, website (clickable), photo of the last 5 places in a table */}
+      {selectedValue === 'BYDISTANCE' && (
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Phone</th>
+              <th>Rating</th>
+              <th>Website</th>
+              <th>Photo</th>
+            </tr>
+          </thead>
+          <tbody>
+            {lastFiveNames.map((name, index) => (
+              <tr key={name}>
+                <td>{name}</td>
+                <td>{lastFivePhones[index]}</td>
+                <td>{lastFiveRatings[index]}</td>
+                <td><a href={lastFiveWebsites[index]}>{lastFiveWebsites[index]}</a></td>
+                <td><img src={lastFivePhotos[index]} alt={name} /></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
+        {/* if it is BYRATING, do the first 5 */}
+      {selectedValue === 'BYRATING' && (
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Phone</th>
+              <th>Rating</th>
+              <th>Website</th>
+              <th>Photo</th>
+            </tr>
+          </thead>
+          <tbody>
+            {firstFiveNames.map((name, index) => (
+              <tr key={name}>
+                <td>{name}</td>
+                <td>{firstFivePhones[index]}</td>
+                <td>{firstFiveRatings[index]}</td>
+                <td><a href={firstFiveWebsites[index]}>{firstFiveWebsites[index]}</a></td>
+                <td><img src={firstFivePhotos[index]} alt={name} /></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
+
     </>
   );
 };
