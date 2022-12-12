@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { UserContext } from "../contexts/user.context";
 import React from 'react'
 import ReactDOM from 'react-dom'
+import GoogleLogin from 'react-google-login';
 const Login = () => {
  const navigate = useNavigate();
  const location = useLocation();
@@ -14,6 +15,16 @@ const Login = () => {
  
  // We are using React's "useState" hook to keep track
  //  of the form values.
+
+ // google 
+ const handleFailure =(result)=>{
+  //alert(result);
+} ;
+const handleLogin =(googleData)=>{
+  // console.log(googleData);
+};
+
+
  const [form, setForm] = useState({
    email: "",
    password: ""
@@ -73,8 +84,13 @@ const Login = () => {
  
    }
  };
- 
- return <form style={{ display: "flex", flexDirection: "column", maxWidth: "300px", margin: "auto" }}>
+
+
+
+       
+ return ( 
+  <div>
+ <form style={{ display: "flex", flexDirection: "column", maxWidth: "300px", margin: "auto" }}>
    <h1>Login</h1>
    <TextField
      label="Email"
@@ -99,6 +115,22 @@ const Login = () => {
    </Button>
    <p>Don't have an account? <Link to="/signup">Signup</Link></p>
  </form>
-}
+ <div>
+        
+        <GoogleLogin
+    clientId={process.env.REACT_APP_GOOGLE_GOOGLE_CLIENT_ID}
+    buttonText="Log in with Google"
+     onSuccess={handleLogin}
+     onFailure={handleFailure}
+    cookiePolicy={'single_host_origin'}
+    isSignedIn={true}
+    >
+
+    </GoogleLogin>
+
+    </div>
+  </div>
+ 
+)}
  
 export default Login;

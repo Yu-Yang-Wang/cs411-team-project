@@ -57,25 +57,26 @@ export default function VerticalTabs() {
         aria-label="Vertical tabs example"
         sx={{ borderRight: 1, borderColor: 'divider' }}
       >
-        <Tab label="Grubhub" {...a11yProps(0)} />
-        <Tab label="Item Two" {...a11yProps(1)} />
-        <Tab label="Item Three" {...a11yProps(2)} />
-        <Tab label="Item Four" {...a11yProps(3)} />
+        <Tab label="Phone Number" {...a11yProps(0)} />
+        <Tab label="Address" {...a11yProps(1)} />
+        <Tab label="Email Address" {...a11yProps(2)} />
+        <Tab label="Operating hours" {...a11yProps(3)} />
         <Tab label="Item Five" {...a11yProps(4)} />
         <Tab label="Item Six" {...a11yProps(5)} />
         <Tab label="Item Seven" {...a11yProps(6)} />
       </Tabs>
       <TabPanel value={value} index={0}>
-        <h1>Grubhub</h1>
+        <h1>(617) 353-2000</h1>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Item Two
+      <h1>Boston, MA 02215</h1>
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Item Three
+      <h1>imnotlatte@gmail.com</h1>
       </TabPanel>
       <TabPanel value={value} index={3}>
-        Item Four
+      <h3>Mon to Fri: 11am-5pm</h3>
+      <h3>Sat to Sun: 11am-3pm</h3>
       </TabPanel>
       <TabPanel value={value} index={4}>
         Item Five

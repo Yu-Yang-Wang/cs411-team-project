@@ -1,31 +1,25 @@
 import React from "react" ;
-import {Button} from "react-bootstrap";
+import {Button, Navbar} from "react-bootstrap";
 import {useNavigate} from 'react-router-dom';
 import ContactSection from '../Components/ContactSection';
 import Map from '../Components/Map';
+import ContactForm from "../Components/ContactForm/ContactForm";
+import VertiNavbar from "../Components/VertiNavbar/VertiNavbar";
 
+const Contact = () => {
+    let navigate = useNavigate();
 
-// const Contact = () => {
-//     let navigate = useNavigate();
-
-//     const handleOnClick = () => {
-//         navigate('/');
-//     };
-//     return (
-//         <div>
-//             <h3> Contact Page</h3>
-//             <h2>Contact Page</h2>
-//             <Button onClick={handleOnClick} >Home</Button>
-//         </div>
-//     );
-// }
-
-// export default Contact;
-export default function Contact() {
+    const handleOnClick = () => {
+        navigate('/');
+    };
     return (
-      <>
-        <ContactSection />
-        <Map />
-      </>
+        <div>
+          <Navbar/>
+            {/* <VertiNavbar/> */}
+            <ContactForm/>
+   
+        </div>
     );
-  }
+}
+
+export default Contact;

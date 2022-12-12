@@ -5,7 +5,7 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import SearchBar_page from "./pages/SearchBar_page";
 import ReactDOM from 'react-dom';
-import GoogleLogin from 'react-google-login';
+
 
 import "./App.css";
 import logo from "./logo.svg";
@@ -53,37 +53,17 @@ function App(){
     //   localStorage.removeItem("loginData");
     //   setLoginData(null);
     // };
-    const handleFailure =(result)=>{
-      //alert(result);
-    } ;
-    const handleLogin =(googleData)=>{
-      // console.log(googleData);
-    };
+
 return (
        
     //<BrowserRouter>
     <div className="App">
-      {/* <Navbar/> */}
-      <div>
-        
-            <GoogleLogin
-        clientId={process.env.REACT_APP_GOOGLE_GOOGLE_CLIENT_ID}
-        buttonText="Log in with Google"
-         onSuccess={handleLogin}
-         onFailure={handleFailure}
-        cookiePolicy={'single_host_origin'}
-        isSignedIn={true}
-        >
-
-        </GoogleLogin>
-
-        
-      </div>
+      <Navbar/>
      {/* We are wrapping our whole app with UserProvider so that */}
      {/* our user is accessible through out the app from any page*/}
      <UserProvider>
        <Routes>
-        {/* <Route path="/search" element={<SearchBar_page />} /> */}
+        <Route path="/search" element={<SearchBar_page />} />
          <Route path="/login" element={<Login />} />
          <Route path="/signup" element={<Signup />} />
           <Route path="/about" element={<About />} />
@@ -92,6 +72,7 @@ return (
          <Route element={<PrivateRoute />}>
            <Route path="/" element={<Home />} />
            <Route path="/about" element={<About />} />
+           <Route path="/contact" element={<Contact/>} />
          </Route>
        </Routes>
      </UserProvider>
