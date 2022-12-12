@@ -1,19 +1,23 @@
 from flask_restx import Namespace, Resource, fields
 # flask imports 
-from flask import jsonify, Response 
+from flask import jsonify, Response, request, make_response
 import googlemaps 
 from dotenv import load_dotenv, find_dotenv 
 import os 
 import requests 
-
 # locate the env file for secured informations 
+import time 
+
 load_dotenv(find_dotenv())
 
 api = Namespace('cafe_locations', description='Getting the google map information of the cafe location')
 
 # accessing the google map api 
 G_KEY = os.getenv("GOOGlE_API_K")
+# accessing the pexels api
 
+PEXELS_KEY = os.getenv("PEXEL_K")
+gmaps = googlemaps.Client(key= G_KEY)
 
 # routing the page w/ the frontend 
 @api.route('/search/<string:place_loc>')
@@ -27,9 +31,47 @@ class mapLookup(Resource):
          
         rating_ls, dist_ls = get_nearby_coffee(loc)
         return jsonify(BYRATING =rating_ls, BYDISTANCE = dist_ls)
-    
-gmaps = googlemaps.Client(key= G_KEY)
 
+@api.route('/search/all/<string:place_name>')
+class allLookup(Resource):
+    def get(self, place_name):
+        loc = get_place_loc(place_name)
+        if loc == None or loc == "":
+            return Response(status=400)
+        
+        rating_ls, dist_ls = get_nearby_coffee(loc)
+        name_ls = get_closest_names(rating_ls, dist_ls)
+        # use name_ls to get the pictures of all of them 
+        photo_ls = get_pic_all(name_ls)
+        # get phone numbers of all of them 
+        
+        phone_ls = [] 
+        review = []
+        weekday_ls = []
+        website_ls = []
+        
+        for key in rating_ls:
+            place = rating_ls[key]
+            phone_ls.append(place['Phone_number'])
+            review.append(place['Rating'])
+            weekday_ls.append(place['Weekday_Hours'])
+            website_ls.append(place['Website'])
+            
+        for key in dist_ls: 
+            place = dist_ls[key] 
+            phone_ls.append(place['Phone_number'])
+            review.append(place['Rating'])
+            weekday_ls.append(place['Weekday_Hours'])
+            website_ls.append(place['Website'])
+
+        info = {} 
+        info['names'] = name_ls
+        info['phone'] = phone_ls
+        info['rating'] = review
+        #info['weekday'] = weekday_ls
+        info['website'] = website_ls
+        info['photo'] = photo_ls
+        return make_response(info, 200 )
 
 # Google API requires place_id to get the information near by the location  
 def get_place_loc(place_name):
@@ -113,26 +155,69 @@ def get_nearby_coffee(loc, radius = 1000 ):
     
     # use get place info to get the information of the coffee house
     dist_ls = {
-        'top1_d': get_place_info(gmapz_rating_loc[0]['place_id']),
-        'top2_d': get_place_info(gmapz_rating_loc[1]['place_id']),
-        'top3_d': get_place_info(gmapz_rating_loc[2]['place_id']),
-        'top4_d': get_place_info(gmapz_rating_loc[3]['place_id']),
-        'top5_d': get_place_info(gmapz_rating_loc[4]['place_id'])
+        0 : get_place_info(gmapz_rating_loc[0]['place_id']),
+        1 : get_place_info(gmapz_rating_loc[1]['place_id']),
+        2 : get_place_info(gmapz_rating_loc[2]['place_id']),
+        3 : get_place_info(gmapz_rating_loc[3]['place_id']),
+        4 : get_place_info(gmapz_rating_loc[4]['place_id'])
     }
     rating_ls = {
-        'top1_r': get_place_info(gmapz_rating[0]['place_id']),
-        'top2_r': get_place_info(gmapz_rating[1]['place_id']),
-        'top3_r': get_place_info(gmapz_rating[2]['place_id']),
-        'top4_r': get_place_info(gmapz_rating[3]['place_id']),
-        'top5_r': get_place_info(gmapz_rating[4]['place_id'])
+        0 : get_place_info(gmapz_rating[0]['place_id']),
+        1 : get_place_info(gmapz_rating[1]['place_id']),
+        2 : get_place_info(gmapz_rating[2]['place_id']),
+        3 : get_place_info(gmapz_rating[3]['place_id']),
+        4 : get_place_info(gmapz_rating[4]['place_id'])
     } 
     
     # return the top 5 highest rating, the top 5 closest coffee house in the json format
 
     return rating_ls, dist_ls
 
-# example: 
+
+def get_closest_names(rating_ls, dist_ls):
+    ''' 
+    Use get_nearby_coffee to get the top 5 closest coffee house names and top 5 highest rating coffee house names
+    '''
+    # get the top 5 closest coffee house names and top 5 highest rating coffee house names
+    # get the names of the coffee house
+    rating_names = [rating_ls[0]['Name'], rating_ls[1]['Name'], rating_ls[2]['Name'], rating_ls[3]['Name'], rating_ls[4]['Name']]
+    dist_names =  [dist_ls[0]['Name'], dist_ls[1]['Name'], dist_ls[2]['Name'], dist_ls[3]['Name'], dist_ls[4]['Name']]
+    # rating name first, then distance name, in a single list
+    return rating_names + dist_names
+ 
+    
+def get_pic(place_name): 
+    ''' 
+    Use the place name and return a photo of the place
+    '''
+    url = 'https://api.pexels.com/v1/search?query=' + place_name + '&per_page=1'
+    header = {'Authorization': PEXELS_KEY}
+    response = requests.request("GET", url, headers = header)
+    response = response.json()
+    photo_ls = [] 
+    for photo in response['photos']:
+        photo_ls.append(photo['src']['medium'])
+
+    return photo_ls 
 
 
-#temp = mapLookup()
-#print(temp.get("42.3601,-71.0589"))
+def get_pic_all(names):
+    '''
+    Use the place info and return a photo of the place BY the top rating coffee houses AND the top closest coffee houses
+    '''
+    # call the get_pic function to get the photo of the place with delay to the calls to the api
+    pic_ls = [] 
+    for name in names:
+        time.sleep(1)
+        pic = get_pic(name)
+        if pic != []:
+            pic_ls.append(pic)
+    return pic_ls
+              
+            
+
+
+
+
+
+

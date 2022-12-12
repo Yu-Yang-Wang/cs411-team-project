@@ -81,7 +81,7 @@ function NavScrollExample() {
             </Nav> */}
             
             {/*Adding the search bar */}
-            <Nav.Link href="http://localhost:3000/search">Search</Nav.Link> 
+            <Nav.Link href="http://localhost:3000/search_bar">Search Location</Nav.Link> 
           </Nav>
           {/* <Form className="d-flex">
             <Form.Control
